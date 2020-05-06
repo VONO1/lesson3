@@ -1,7 +1,18 @@
 f = open('text.txt')
 text = f.read()
 
+#Словарь
+import pymorphy2
+morph = pymorphy2.MorphAnalyzer()
 
+
+def LEG (word):
+    p = morph.parse(word)[0]
+    pp = p.normal_form
+    return pp
+
+#print(LEG('звери'))
+LEG ('звери')
 
 #e = список знаков препинания формат ,"#знак препинания"
 e = ",", ".","!","-","?","»","«","—"
@@ -20,6 +31,7 @@ print(type(lll))
 
 #нижний регистр
 low_text = list(map(str.lower, lll))
+low_text = list(map(LEG, lll))
 print(low_text)
 
 dictt = {}
